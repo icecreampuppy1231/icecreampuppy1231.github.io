@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="icon" onclick="openWindow('aboutWindow')">
+        <img src="images/icon1.png" alt="About Me Icon" style="width: 55px; height: 55px;">
+        <div class="about-me">About Me</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="icon" onclick="openWindow('projectWindow')">
+        <img src="images/icon2.png" alt="Projects Icon" style="width: 55px; height: 55px;">
+        <div class="projects">Projects</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="icon" onclick="openWindow('contactWindow')">
+        <img src="images/icon3.png" alt="Contact Icon" style="width: 55px; height: 55px;">
+        <div class="contact">Contact</div>
+
+    </div>
+
+
+    <div class="about-me">
+        <div class="window" id="aboutWindow" style="display: none; width: 320px; top: 200px; left: 100px; position: absolute;" onmousedown="bringToFront('aboutWindow')">
+            <div class="title-bar" style="background:#df96ba;" onmousedown="dragStart(event, 'aboutWindow')">
+                <div class="title-bar-text"> About Me</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('aboutWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p> A Cybersecurity and Computer Science student</p>
+                <ul>
+                    <li>things</li>
+                    <li>things</li>
+                    <li>things</li>
+                </ul>
+            </div>
+            <div class="status-bar">
+                <p class="status-bar-field">dk what to write yet</p>
+                <p class="status-bar-field">""</p>
+                <p class="status-bar-field">""</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="projects">
+        <div class="window" id="projectWindow" style="display: none; width: 300px; position: absolute;" onmousedown="bringToFront('projectWindow')">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'projectWindow')">
+                <div class="title-bar-text"> Projects</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close" onclick="closeWindow('projectWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>bla bla bla</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contact">
+        <div class="window" id="contactWindow" style="display: none; width: 300px; position: absolute;" onmousedown="bringToFront('contactWindow')">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'contactWindow')">
+                <div class="title-bar-text"> Contact</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('contactWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>ble ble ble</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
