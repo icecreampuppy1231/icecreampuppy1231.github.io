@@ -62,5 +62,7 @@ body {
 
 .intro {
     width: 500px;
-    position:fixed
+    position: absolute;
+    right: 300px;
+    
 }
