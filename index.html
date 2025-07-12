@@ -106,7 +106,15 @@
 
     <div class="skills">
         <div class="window" id="skillsWindow" style="display: none; width: 300px; position: absolute;" onmousedown="bringToFront('skillsWindow')">
-            
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'skillsWindow')">
+                <div class="title-bar-text"> Skills</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('skillsWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>blahhhhhhhhhhh</p>
+            </div>
         </div>
     </div>
 </body>
