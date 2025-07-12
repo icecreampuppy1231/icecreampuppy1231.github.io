@@ -60,11 +60,9 @@ body {
     text-align: center;
 }
 
-.intro {
+.rightWindow {
     width: 500px;
     position: absolute;
-    right: 1000px;
-    background: #df96ba;
-    margin: 0;
+    right: 129px;
 
 }
