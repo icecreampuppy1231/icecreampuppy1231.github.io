@@ -73,6 +73,7 @@ body {
 
 
 .secondWindow {
+    border: #bfbfbf;
     background-color: #c0c0c0;
     width: 350px;
     box-shadow: 4px 4px #888;
