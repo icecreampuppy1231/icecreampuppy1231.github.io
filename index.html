@@ -132,9 +132,10 @@
         </div>
     </div>
 
-    <div class="rightWindow window">
-        <div class="title-bar" style="background: #df96ba;">
+    <div class="rightWindow window" id="firstWindow">
+        <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'firstWindow')">
             <div class="title-bar-text">Welcome to my website ~ ~</div>
+                <button class="close-btn" onclick="closePopup('firstWindow')">Close</button>
         </div>
         <div class="window-body">
         <p> urmmmmmmmmmm</p>
@@ -149,6 +150,41 @@
             <p class="status-bar-field">First one</p>
             <p class="status-bar-field">CPU Usage: 14%</p>
         </div>
+        </div>
+
+
+        <div class="secondWindow li" id="secondWindow">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'secondWindow')">
+                <div class="title-bar-text"> My files </div>
+                <button class="close-btn" onclick="closePopup('secondWindow')">Close</button>
+
+            </div>
+            <div class="window-body">
+                <ul>
+                    <li onclick="openPopup('fun')">fun_facts.ini</li>
+                    <li onclick="openPopup('secrets')">secrets.txt</li>
+                    <li onclick="openPopup('danger')">DO_NOT_OPEN.bat</li>
+                </ul>
+            </div>
+
+        </div>
+
+         <div class="popup" id="fun" onmousedown="dragStart(event, 'fun')">
+            <strong>fun_facts.ini</strong>
+            <p>- Eat ice cream everyday <br>- hmm<br>- hmm</p>
+            <button class="close-btn" onclick="closePopup('fun')">Close</button>
+        </div>
+
+        <div class="popup" id="secrets" onmousedown="dragStart(event, 'secrets')">
+            <strong>secret.txt</strong>
+            <p>"There's no secret here... or is there?"<br>¯\\_(ツ)_/¯</p>
+            <button class="close-btn" onclick="closePopup('secrets')">Close</button>
+        </div>
+
+        <div class="popup" id="danger" onmousedown="dragStart(event, 'danger')">
+            <strong>DO_NOT_OPEN.bat</strong>
+            <p> Virus not installed. </p>
+            <button class="close-btn" onclick="closePopup('danger')">Close</button>
         </div>
 
 </body>
