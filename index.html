@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #FFDCDC; background: linear-gradient(90deg,rgba(255, 220, 220, 1) 0%, rgba(255, 242, 235, 1) 50%, rgba(255, 232, 205, 1) 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; font-family: 'Press Start 2P', cursive;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div style="margin-bottom: 20px; animation: bounce 1s infinite;">
+                <img src="images/loading-icon.png" alt="Loading Icon" style="width: 64px; height: 64px; object-fit: contain;">
+            </div>
+            <h1 style="color: #df96ba; font-size: 24px; margin: 0 0 10px 0;">Loading System...</h1>
+            <p style="color: #666; font-size: 12px; margin: 0;">Initialising Annabelle's Portfolio</p>
+        </div>
+        
+        <div style="width: 300px; background: #c0c0c0; border: 2px solid #000; padding: 10px; box-shadow: 4px 4px #666;">
+            <div style="background: #000; height: 20px; border: 1px solid #666; position: relative;">
+                <div id="loadingBar" style="background: linear-gradient(90deg, #df96ba, #ff82be); height: 100%; width: 0%; transition: width 0.3s ease;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 10px; color: #666;">
+                <span id="loadingMessage">Starting up...</span>
+                <span id="loadingProgress">0%</span>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px; font-size: 10px; color: #999;">
+            <span id="loadingDots">Loading</span>
+        </div>
+    </div>
+
+    <div class="icon" onclick="openWindow('aboutWindow')">
+        <img src="images/icon1.png" alt="About Me Icon" style="width: 55px; height: 55px;">
+        <div class="about-me">About Me</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="icon" onclick="openWindow('projectWindow')">
+        <img src="images/icon2.png" alt="Projects Icon" style="width: 55px; height: 55px;">
+        <div class="projects">Projects</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="icon" onclick="openWindow('contactWindow')">
+        <img src="images/icon3.png" alt="Contact Icon" style="width: 55px; height: 55px;">
+        <div class="contact">Contact</div>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="icon" onclick="openWindow('skillsWindow')" style="left: 5px;">
+        <img src="images/icon4.png" alt="Skills Icon" style="width: 55px; height: 55px;">
+        <div class="skills"> Skills</div>
+    </div>
+
+    <div class="icon" onclick="openWindow('resumeWindow')" style="top: 500px; left: 5px;">
+        <img src="images/icon5.png" alt="Resume Icon" style="width: 55px; height: 55px;">
+        <div class="resume"> Resume</div>
+    </div>
+
+    <div class="icon" onclick="openWindow('timelineWindow')" style="top: 600px; left: 5px;">
+        <img src="images/icon6.png" alt="Timeline Icon" style="width: 55px; height: 55px;">
+        <div class="timeline"> Timeline</div>
+    </div>
+
+
+    <div class="about-me">
+        <div class="window" id="aboutWindow" style="display: none; width: 500px; height: 400px; top: 150px; left: 50px; position: absolute;" onmousedown="bringToFront('aboutWindow')">
+            <div class="title-bar" style="background:#df96ba;" onmousedown="dragStart(event, 'aboutWindow')">
+                <div class="title-bar-text"> About Me</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close" onclick="closeWindow('aboutWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="height: 320px; overflow-y: auto;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #ff9a9e, #fecfef); border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white;">A</div>
+                    <div>
+                        <h3 style="margin: 0; color: #333; font-family: 'Press Start 2P', cursive; font-size: 12px;">Annabelle</h3>
+                        <p style="margin: 5px 0; color: #666; font-size: 10px;">Cybersecurity & Computer Science Student</p>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #df96ba; margin: 10px 0 5px 0; font-size: 11px;"> Education</h4>
+                    <p style="margin: 0; font-size: 10px; line-height: 1.4;">Third year student at University of Western Australia (UWA)<br>
+                    Majoring in Cybersecurity and Computer Science</p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #df96ba; margin: 10px 0 5px 0; font-size: 11px;"> Passion</h4>
+                    <p style="margin: 0; font-size: 10px; line-height: 1.4;">Penetration testing, software development, and network security.<br>
+                    I love exploring vulnerabilities!</p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #df96ba; margin: 10px 0 5px 0; font-size: 11px;"> Current Focus</h4>
+                    <p style="margin: 0; font-size: 10px; line-height: 1.4;">• Penetration testing and web development<br>
+                    • Network security protocols<br>
+                    • Security awareness training<br>
+                    <br>
+                    • Learning frontend and backend development</p>
+                    
+                </div>
+
+                <div>
+                    <h4 style="color: #df96ba; margin: 10px 0 5px 0; font-size: 11px;">Goals</h4>
+                    <p style="margin: 0; font-size: 10px; line-height: 1.4;">Aspiring to become a cybersecurity professional who helps with protect their digital assets.</p>
+                </div>
+            </div>
+            <div class="status-bar">
+                <p class="status-bar-field">Status: Available for opportunities</p>
+                <p class="status-bar-field">UWA Student</p>
+                <p class="status-bar-field">Cybersecurity Student</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="projects">
+        <div class="window" id="projectWindow" style="display: none; width: 600px; height: 500px; top: 50px; left: 100px; position: absolute;" onmousedown="bringToFront('projectWindow')">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'projectWindow')">
+                <div class="title-bar-text"> My Projects</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close" onclick="closeWindow('projectWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="height: 420px; overflow-y: auto;">
+                <!-- Tab Bar -->
+                <div class="tab-bar" style="background: #f0f0f0; border-bottom: 1px solid #ccc; display: flex; margin-bottom: 15px;">
+                    <div class="tab active" id="tab-cybersecurity" onclick="switchTab('cybersecurity')" style="background: #df96ba; color: white; padding: 6px 12px; cursor: pointer; border-right: 1px solid #ccc; font-size: 10px;">Cybersecurity</div>
+                    <div class="tab" id="tab-webdev" onclick="switchTab('webdev')" style="background: #f0f0f0; color: #666; padding: 6px 12px; cursor: pointer; border-right: 1px solid #ccc; font-size: 10px;">Web Dev</div>
+                    <div class="tab" id="tab-ctf" onclick="switchTab('ctf')" style="background: #f0f0f0; color: #666; padding: 6px 12px; cursor: pointer; font-size: 10px;">Network</div>
+                </div>
+
+                <!-- Cybersecurity Tab Content -->
+                <div id="cybersecurity-content" class="tab-content">
+                    <div style="margin-bottom: 15px;">
+                        <h3 style="color: #df96ba; margin: 0 0 10px 0; font-size: 12px;">Cybersecurity Projects</h3>
+                        <p style="margin: 0; font-size: 10px; color: #666;">Cybersecurity tools and techniques </p>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div style="background: #f8f9fa; border: 1px solid #ddd; border-radius: 5px; padding: 12px;">
+                            <h4 style="color: #df96ba; margin: 0 0 8px 0; font-size: 11px;">Flask JWT Authentication</h4>
+                            <p style="margin: 0 0 8px 0; font-size: 9px; color: #666; line-height: 1.3;"> This project implements a simple Flask web application demonstrating a secure login system using JSON Web Tokens (JWT) and strong password hashing. </p>
+                            <div style="display: flex; gap: 5px; margin-bottom: 8px;">
+                                <span style="background: #e3f2fd; color: #1976d2; padding: 2px 6px; border-radius: 3px; font-size: 8px;">Python</span>
+                                <span style="background: #f3e5f5; color: #7b1fa2; padding: 2px 6px; border-radius: 3px; font-size: 8px;">Security</span>
+                            </div>
+                            <div style="text-align: center;">
+                                <button style="background: #df96ba; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; font-size: 8px;" onclick="openProject('github1')">View Code</button>
+                            </div>
+                        </div>
+                        <div style="background: #f8f9fa; border: 1px solid #ddd; border-radius: 5px; padding: 12px;">
+                            <h4 style="color: #df96ba; margin: 0 0 8px 0; font-size: 11px;">More to come...</h4>
+                            <p style="margin: 0 0 8px 0; font-size: 9px; color: #666; line-height: 1.3;">Coming soon</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web Development Tab Content -->
+                <div id="webdev-content" class="tab-content" style="display: none;">
+                    <div style="margin-bottom: 15px;">
+                        <h3 style="color: #df96ba; margin: 0 0 10px 0; font-size: 12px;">Web Development</h3>
+                        <p style="margin: 0; font-size: 10px; color: #666;">Frontend and Backend Development</p>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div style="background: #f8f9fa; border: 1px solid #ddd; border-radius: 5px; padding: 12px;">
+                            <h4 style="color: #df96ba; margin: 0 0 8px 0; font-size: 11px;">Portfolio</h4>
+                            <p style="margin: 0 0 8px 0; font-size: 9px; color: #666; line-height: 1.3;">This Windows 95 inspired portfolio website with interactive elements.</p>
+                            <div style="display: flex; gap: 5px; margin-bottom: 8px;">
+                                <span style="background: #e3f2fd; color: #1976d2; padding: 2px 6px; border-radius: 3px; font-size: 8px;">HTML</span>
+                                <span style="background: #f3e5f5; color: #7b1fa2; padding: 2px 6px; border-radius: 3px; font-size: 8px;">CSS</span>
+                                <span style="background: #fff3e0; color: #f57c00; padding: 2px 6px; border-radius: 3px; font-size: 8px;">JS</span>
+                            </div>
+                            <div style="text-align: center;">
+                                <button style="background: #df96ba; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; font-size: 8px;" onclick="openProject('github3')">View Code</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: #f8f9fa; border: 1px solid #ddd; border-radius: 5px; padding: 12px;">
+                        <h4 style="color: #df96ba; margin: 0 0 8px 0; font-size: 11px;">Clothing Store Website Building</h4>
+                        <p style="margin: 0 0 8px 0; font-size: 9px; color: #666; line-height: 1.3;"> Helping Clothing Company to build a shopping website (current project, will be published soon) </p>
+                        <div style="display: flex; gap: 5px; margin-bottom: 8px;">
+                            <span style="background: #e3f2fd; color: #1976d2; padding: 2px 6px; border-radius: 3px; font-size: 8px;">Frontend</span>
+                            <span style="background: #f3e5f5; color: #7b1fa2; padding: 2px 6px; border-radius: 3px; font-size: 8px;">Backend</span>
+                        </div>
+                        <div style="text-align: center;">
+                            <button style="background: #df96ba; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; font-size: 8px;" onclick="openProject('github4')">View Code</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTF Tab Content -->
+                <div id="ctf-content" class="tab-content" style="display: none;">
+                    <div style="margin-bottom: 15px;">
+                        <h3 style="color: #df96ba; margin: 0 0 10px 0; font-size: 12px;">Network</h3>
+                        <p style="margin: 0; font-size: 10px; color: #666;">Battleship Game</p>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div style="background: #f8f9fa; border: 1px solid #ddd; border-radius: 5px; padding: 12px;">
+                            <h4 style="color: #df96ba; margin: 0 0 8px 0; font-size: 11px;">A mini two player battleship game.</h4>
+                            <p style="margin: 0 0 8px 0; font-size: 9px; color: #666; line-height: 1.3;">Enhance a single player battleship game to a two player game.</p>
+                            <div style="display: flex; gap: 5px; margin-bottom: 8px;">
+                                <span style="background: #e8f5e8; color: #2e7d32; padding: 2px 6px; border-radius: 3px; font-size: 8px;">Network</span>
+                            </div>
+                            <div style="text-align: center;">
+                                <button style="background: #df96ba; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer; font-size: 8px;" onclick="openProject('github5')">View Writeups</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <button style="background: #df96ba; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-size: 10px;" onclick="openAllProjects()">
+                        View All Projects on GitHub
+                    </button>
+                </div>
+            </div>
+            <div class="status-bar">
+                <p class="status-bar-field">Projects: 3</p>
+                <p class="status-bar-field">Languages: Python, HTML, CSS, JS</p>
+                <p class="status-bar-field">Focus: Cybersecurity</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contact">
+        <div class="window" id="contactWindow" style="display: none; width: 400px; height: 300px; top: 100px; left: 200px; position: absolute;" onmousedown="bringToFront('contactWindow')">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'contactWindow')">
+                <div class="title-bar-text"> Contact Me</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close" onclick="closeWindow('contactWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="height: 220px; overflow-y: auto;">
+                <div style="margin-bottom: 15px;">
+                    <h3 style="color: #df96ba; margin: 0 0 10px 0; font-size: 12px;">Get in Touch!</h3>
+                    <p style="margin: 0; font-size: 10px; color: #666;">I would love to hear from you about opportunities or just to chat!</p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #df96ba; margin: 10px 0 5px 0; font-size: 11px;">📧 Email</h4>
+                    <p style="margin: 0; font-size: 10px; line-height: 1.4;">
+                        <a href="mailto:annabelletiew12345@gmail.com" style="color: #df96ba; text-decoration: none;">annabelletiew12345@gmail.com</a>
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #df96ba; margin: 10px 0 5px 0; font-size: 11px;">💼 LinkedIn</h4>
+                    <p style="margin: 0; font-size: 10px; line-height: 1.4;">
+                        <a href="https://www.linkedin.com/in/annabelle-tiew-66431828a/" style="color: #df96ba; text-decoration: none;">linkedin.com/in/annabelle-tiew</a>
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #df96ba; margin: 10px 0 5px 0; font-size: 11px;">🐙 GitHub</h4>
+                    <p style="margin: 0; font-size: 10px; line-height: 1.4;">
+                        <a href="https://github.com/icecreampuppy1231" style="color: #df96ba; text-decoration: none;">github.com/icecreampuppy1231</a>
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <h4 style="color: #df96ba; margin: 10px 0 5px 0; font-size: 11px;">📍 Location</h4>
+                    <p style="margin: 0; font-size: 10px; line-height: 1.4;">Perth, Western Australia</p>
+                </div>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <button style="background: #df96ba; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; font-size: 10px;" onclick="openEmail()">
+                        📧 Send Email
+                    </button>
+                </div>
+            </div>
+            <div class="tool-bar" style="background: #c0c0c0; border-top: 1px solid #999; padding: 6px 8px; display: flex; align-items: center; gap: 8px; font-size: 10px;">
+                <button class="tool-btn" style="background: #df96ba; color: white; border: 1px solid #666; padding: 2px 6px; cursor: pointer; font-size: 9px;" onclick="openEmail()">📧 Email</button>
+                <button class="tool-btn" style="background: #0077b5; color: white; border: 1px solid #666; padding: 2px 6px; cursor: pointer; font-size: 9px;" onclick="openLinkedIn()">💼 LinkedIn</button>
+                <button class="tool-btn" style="background: #333; color: white; border: 1px solid #666; padding: 2px 6px; cursor: pointer; font-size: 9px;" onclick="openGitHub()">🐙 GitHub</button>
+                <span class="tool-separator" style="color: #666;">|</span>
+                <span class="tool-info" style="color: #333;">Contact Me</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="skills">
+        <div class="window" id="skillsWindow" style="display: none; width: 300px; position: absolute;" onmousedown="bringToFront('skillsWindow')">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'skillsWindow')">
+                <div class="title-bar-text"> Skills</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('skillsWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <p>blahhhhhhhhhhh</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="rightWindow window" id="firstWindow">
+        <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'firstWindow')">
+            <div class="title-bar-text">Welcome to my website ~ ~</div>
+                <button class="close-btn" onclick="closePopup('firstWindow')">Close</button>
+        </div>
+        <div class="window-body">
+        <p>Welcome to my portfolio!!!</p>
+        <ul>
+            <li>I'm Annabelle, a Cybersecurity student at UWA</li>
+            <li>Passionate about ethical hacking and network security</li>
+            <li>Currently in my 3rd year of Computer Science studies</li>
+            <li>Fun fact: I eat ice cream every day!🍦</li>
+        </ul>
+        <p style="margin-top: 15px; font-size: 10px; color: #666;">
+            Click on the desktop icons to explore more about me, my projects, and skills!
+        </p>
+        </div>
+        <div class="status-bar">
+            <p class="status-bar-field">Press F1 for nothing</p>
+            <p class="status-bar-field">First Web Project</p>
+            <p class="status-bar-field">CPU Usage: 20%</p>
+        </div>
+        </div>
+
+
+        <div class="window" id="secondWindow" style="display: block; width: 300px; height: 250px; position: absolute; right: 30px; top: 300px;" onmousedown="bringToFront('secondWindow')">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'secondWindow')">
+                <div class="title-bar-text"> My files </div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('secondWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="height: 180px; overflow-y: auto;">
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="padding: 8px; cursor: pointer; border-bottom: 1px solid #ddd;" onclick="openPopup('fun')" onmouseover="this.style.backgroundColor='#f0f0f0'" onmouseout="this.style.backgroundColor='transparent'">fun_facts.ini</li>
+                    <li style="padding: 8px; cursor: pointer; border-bottom: 1px solid #ddd;" onclick="openPopup('secrets')" onmouseover="this.style.backgroundColor='#f0f0f0'" onmouseout="this.style.backgroundColor='transparent'">secrets.txt</li>
+                    <li style="padding: 8px; cursor: pointer; border-bottom: 1px solid #ddd;" onclick="openPopup('danger')" onmouseover="this.style.backgroundColor='#f0f0f0'" onmouseout="this.style.backgroundColor='transparent'">DO_NOT_OPEN.bat</li>
+                </ul>
+            </div>
+
+            <div class="status-bar">
+                <p class="status-bar-field">3 files</p>
+                <p class="status-bar-field">Ready</p>
+                <p class="status-bar-field">Click to open</p>
+            </div>
+        </div>
+
+         <div class="window" id="fun" style="display: none; width: 350px; height: 200px; top: 200px; left: 300px; position: absolute;" onmousedown="bringToFront('fun')">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'fun')">
+                <div class="title-bar-text">fun_facts.ini</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('fun')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="height: 120px; overflow-y: auto;">
+                <div style="margin-bottom: 10px;">
+                    <h4 style="color: #df96ba; margin: 0 0 8px 0; font-size: 11px;">Fun Facts About Me:</h4>
+                    <ul style="margin: 0; padding-left: 15px; font-size: 10px; line-height: 1.4;">
+                        <li>Eat ice cream everyday 🍦</li>
+                        <li>Like to learn new languages!</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-bar" style="background: #f0f0f0; border-top: 1px solid #ccc; padding: 4px 8px; display: flex; justify-content: space-between; font-size: 10px;">
+                <span class="info-item" style="color: #666;">Configuration File</span>
+                <span class="info-item" style="color: #666;">Personal Data</span>
+                <span class="info-item" style="color: #666;">Safe to Open</span>
+            </div>
+        </div>
+
+        <div class="window" id="secrets" style="display: none; width: 350px; height: 200px; top: 250px; left: 350px; position: absolute;" onmousedown="bringToFront('secrets')">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'secrets')">
+                <div class="title-bar-text">secrets.txt</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('secrets')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="height: 120px; overflow-y: auto;">
+                <div style="text-align: center; margin: 20px 0;">
+                    <div style="font-size: 24px; margin-bottom: 10px;">🔒</div>
+                    <p style="margin: 0; font-size: 11px; color: #666;">"There's no secret here... or is there?"</p>
+                    <p style="margin: 5px 0; font-size: 16px;">¯\_(ツ)_/¯</p>
+                    <p style="margin: 10px 0 0 0; font-size: 9px; color: #999;">Maybe try looking elsewhere...</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="window" id="danger" style="display: none; width: 350px; height: 200px; top: 300px; left: 400px; position: absolute;" onmousedown="bringToFront('danger')">
+            <div class="title-bar" style="background: #ff6b6b;" onmousedown="dragStart(event, 'danger')">
+                <div class="title-bar-text">DO_NOT_OPEN.bat</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('danger')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="height: 120px; overflow-y: auto;">
+                <div style="text-align: center; margin: 20px 0;">
+                    <div style="font-size: 24px; margin-bottom: 10px;">⚠️</div>
+                    <p style="margin: 0; font-size: 11px; color: #ff6b6b; font-weight: bold;">WARNING: DANGEROUS FILE</p>
+                    <p style="margin: 5px 0; font-size: 10px; color: #666;">Virus not installed. 😅</p>
+                    <p style="margin: 10px 0 0 0; font-size: 9px; color: #999;">This is just a harmless joke file!</p>
+                </div>
+            </div>
+            <div class="info-bar" style="background: #ffe6e6; border-top: 1px solid #ff6b6b; padding: 4px 8px; display: flex; justify-content: space-between; font-size: 10px;">
+                <span class="info-item" style="color: #ff6b6b;">⚠️ Batch File</span>
+                <span class="info-item" style="color: #ff6b6b;">🚫 Dangerous Content</span>
+                <span class="info-item" style="color: #ff6b6b;">Just Kidding!</span>
+            </div>
+        </div>
+
+    <!-- Resume Window -->
+    <div class="resume">
+        <div class="window" id="resumeWindow" style="display: none; width: 450px; height: 350px; top: 100px; left: 200px; position: absolute;" onmousedown="bringToFront('resumeWindow')">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'resumeWindow')">
+                <div class="title-bar-text"> Resume & CV</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('resumeWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="height: 270px; overflow-y: auto;">
+                <div style="text-align: center; margin-bottom: 15px;">
+                    <h3 style="color: #df96ba; margin: 0;">📄 Download My Resume</h3>
+                    <p style="font-size: 10px; color: #666;">Click to download my latest CV</p>
+                </div>
+                <div style="text-align: center; margin: 20px 0;">
+                    <button style="background: #df96ba; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 12px;" onclick="downloadResume()">
+                        📥 Download PDF
+                    </button>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #df96ba; font-size: 11px;">Quick Summary:</h4>
+                    <ul style="font-size: 10px; line-height: 1.4;">
+                        <li>3rd Year Cybersecurity & CS Student at UWA</li>
+                        <li>Passionate about ethical hacking & network security</li>
+                        <li>Solid foundation in programming languages</li>
+                        <li>Available for internships and opportunities</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="status-bar">
+                <p class="status-bar-field">Last updated: Recently</p>
+                <p class="status-bar-field">Format: PDF</p>
+                <p class="status-bar-field">Size: 2.1 MB</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline Window -->
+    <div class="timeline">
+        <div class="window" id="timelineWindow" style="display: none; width: 500px; height: 400px; top: 80px; left: 150px; position: absolute;" onmousedown="bringToFront('timelineWindow')">
+            <div class="title-bar" style="background: #df96ba;" onmousedown="dragStart(event, 'timelineWindow')">
+                <div class="title-bar-text"> My Journey</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="closeWindow('timelineWindow')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="height: 320px; overflow-y: auto;">
+                <div style="position: relative; padding-left: 20px;">
+                    <div style="position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: #df96ba;"></div>
+                    
+                    <div style="position: relative; margin-bottom: 20px;">
+                        <div style="position: absolute; left: -12px; top: 5px; width: 8px; height: 8px; background: #df96ba; border-radius: 50%;"></div>
+                        <div style="background: #f0f8ff; padding: 10px; border-radius: 5px; margin-left: 10px;">
+                            <h4 style="margin: 0; color: #df96ba; font-size: 11px;">2025 (Present)</h4>
+                            <p style="margin: 5px 0; font-size: 10px;">3rd Year at UWA - Learning project management, web development, and penetration testing techniques</p>
+                        </div>
+                    </div>
+
+                    <div style="position: relative; margin-bottom: 20px;">
+                        <div style="position: absolute; left: -12px; top: 5px; width: 8px; height: 8px; background: #df96ba; border-radius: 50%;"></div>
+                        <div style="background: #f0f8ff; padding: 10px; border-radius: 5px; margin-left: 10px;">
+                            <h4 style="margin: 0; color: #df96ba; font-size: 11px;">2024</h4>
+                            <p style="margin: 5px 0; font-size: 10px;">Started focusing on exploit vulnerabilities and implement solutions for them.</p>
+                        </div>
+                    </div>
+
+                    <div style="position: relative; margin-bottom: 20px;">
+                        <div style="position: absolute; left: -12px; top: 5px; width: 8px; height: 8px; background: #df96ba; border-radius: 50%;"></div>
+                        <div style="background: #f0f8ff; padding: 10px; border-radius: 5px; margin-left: 10px;">
+                            <h4 style="margin: 0; color: #df96ba; font-size: 11px;">2023</h4>
+                            <p style="margin: 5px 0; font-size: 10px;">Began Computer Science & Cybersecurity studies at UWA</p>
+                        </div>
+                    </div>
+
+                    <div style="position: relative; margin-bottom: 20px;">
+                        <div style="position: absolute; left: -12px; top: 5px; width: 8px; height: 8px; background: #df96ba; border-radius: 50%;"></div>
+                        <div style="background: #f0f8ff; padding: 10px; border-radius: 5px; margin-left: 10px;">
+                            <h4 style="margin: 0; color: #df96ba; font-size: 11px;">2022</h4>
+                            <p style="margin: 5px 0; font-size: 10px;">(In High School)Discovered passion for cybersecurity</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="status-bar">
+                <p class="status-bar-field">Timeline: 2022-2025</p>
+                <p class="status-bar-field">Status: Ongoing</p>
+                <p class="status-bar-field">Next: Graduation 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Windows Taskbar -->
+    <div id="taskbar" style="position: fixed; bottom: 0; left: 0; width: 100%; height: 30px; background: linear-gradient(180deg, #c0c0c0 0%, #a0a0a0 50%, #808080 100%); border-top: 1px solid #000; display: flex; align-items: center; z-index: 1000; box-shadow: 0 -2px 4px rgba(0,0,0,0.3);">
+        <!-- Start Button -->
+        <div id="startButton" onclick="toggleStartMenu()" style="background: linear-gradient(180deg, #c0c0c0 0%, #a0a0a0 50%, #808080 100%); border: 1px solid #000; border-right: 2px solid #666; padding: 2px 8px; margin: 2px; cursor: pointer; font-size: 10px; font-weight: bold; color: #000; display: flex; align-items: center; gap: 4px;">
+            <img src="images/loading-icon.png" alt="Start" style="width: 16px; height: 16px;">
+            Start
+        </div>
+        
+        <!-- Taskbar Items -->
+        <div id="taskbarItems" style="display: flex; gap: 2px; flex: 1; padding: 0 5px;">
+            <!-- Open windows will appear here -->
+        </div>
+        
+        <!-- System Tray -->
+        <div style="display: flex; align-items: center; gap: 5px; padding: 0 5px; background: linear-gradient(180deg, #c0c0c0 0%, #a0a0a0 50%, #808080 100%); border: 1px solid #000; border-left: 2px solid #666; margin: 2px; height: 24px;">
+            <div style="font-size: 8px; color: #000;">CPU: 20%</div>
+            <div style="width: 1px; height: 16px; background: #666;"></div>
+            <div style="font-size: 8px; color: #000;">12:34 PM</div>
+        </div>
+    </div>
+
+    <!-- Start Menu -->
+    <div id="startMenu" style="position: fixed; bottom: 30px; left: 0; width: 200px; background: #c0c0c0; border: 2px solid #000; border-bottom: 1px solid #666; display: none; z-index: 1001; box-shadow: 2px -2px 4px rgba(0,0,0,0.3);">
+        <!-- Start Menu Header -->
+        <div style="background: linear-gradient(90deg, #0a246a 0%, #a6caf0 100%); color: white; padding: 4px 8px; font-size: 11px; font-weight: bold; border-bottom: 1px solid #000;">
+            Annabelle's Portfolio
+        </div>
+        
+        <!-- Start Menu Items -->
+        <div style="padding: 2px 0;">
+            <!-- Programs -->
+            <div style="padding: 2px 0; border-bottom: 1px solid #666;">
+                <div style="padding: 2px 8px; font-size: 10px; color: #000; background: #c0c0c0; cursor: pointer;" onclick="openWindow('aboutWindow'); closeStartMenu();">
+                    About Me
+                </div>
+                <div style="padding: 2px 8px; font-size: 10px; color: #000; background: #c0c0c0; cursor: pointer;" onclick="openWindow('projectWindow'); closeStartMenu();">
+                    Projects
+                </div>
+                <div style="padding: 2px 8px; font-size: 10px; color: #000; background: #c0c0c0; cursor: pointer;" onclick="openWindow('skillsWindow'); closeStartMenu();">
+                    Skills
+                </div>
+                <div style="padding: 2px 8px; font-size: 10px; color: #000; background: #c0c0c0; cursor: pointer;" onclick="openWindow('contactWindow'); closeStartMenu();">
+                    Contact
+                </div>
+            </div>
+            <div style="padding: 2px 0; border-bottom: 1px solid #666;">
+                <div style="padding: 2px 8px; font-size: 10px; color: #000; background: #c0c0c0; cursor: pointer;" onclick="openWindow('resumeWindow'); closeStartMenu();">
+                    Resume
+                </div>
+                <div style="padding: 2px 8px; font-size: 10px; color: #000; background: #c0c0c0; cursor: pointer;" onclick="openWindow('timelineWindow'); closeStartMenu();">
+                    Timeline
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
